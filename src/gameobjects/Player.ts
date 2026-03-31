@@ -1,4 +1,4 @@
-import { GameObjects, Physics, Scene } from "phaser";
+import { type GameObjects, Physics, type Scene } from "phaser";
 import { Bullet } from "./Bullet";
 
 interface PlayerConstructorParams {
@@ -7,7 +7,7 @@ interface PlayerConstructorParams {
 
 export class Player extends Physics.Arcade.Image {
     // Player states: waiting, start, can_move
-    state: string = "waiting";
+    state = "waiting";
     propulsion_fire: GameObjects.Sprite | null = null;
     declare scene: Scene;
     bullets: Physics.Arcade.Group;

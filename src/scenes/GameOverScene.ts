@@ -7,9 +7,9 @@ interface GameOverSceneInitData {
 }
 
 export class GameOverScene extends Scene {
-    end_points: number = 0;
-    player_points: number = 0;
-    boss_points: number = 0;
+    end_points = 0;
+    player_points = 0;
+    boss_points = 0;
 
     constructor() {
         super("GameOverScene");

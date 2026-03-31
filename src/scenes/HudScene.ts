@@ -1,4 +1,4 @@
-import { Scene, GameObjects } from "phaser";
+import { Scene, type GameObjects } from "phaser";
 
 interface HudSceneInitData {
     remaining_time: number;
@@ -6,7 +6,7 @@ interface HudSceneInitData {
 
 // The HUD scene is the scene that shows the points and the remaining time.
 export class HudScene extends Scene {
-    remaining_time: number = 0;
+    remaining_time = 0;
 
     remaining_time_text!: GameObjects.BitmapText;
     points_text!: GameObjects.BitmapText;

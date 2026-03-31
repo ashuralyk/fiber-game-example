@@ -1,11 +1,11 @@
-import { Physics, Math, Scene, Tweens } from "phaser";
+import { Physics, Math as PhaserMath, type Scene, type Tweens } from "phaser";
 import { Bullet } from "./Bullet";
 
 export class BlueEnemy extends Physics.Arcade.Sprite {
     declare scene: Scene;
-    animation_is_playing: boolean = false;
-    damage_life_point: number = 3;
-    scale_damage: number = 4;
+    animation_is_playing = false;
+    damage_life_point = 3;
+    scale_damage = 4;
     up_down_tween: Tweens.Tween | null = null;
 
     bullets: Physics.Arcade.Group;
@@ -29,7 +29,7 @@ export class BlueEnemy extends Physics.Arcade.Sprite {
             targets: this,
             y: 85,
             duration: 1000,
-            ease: Math.Easing.Sine.InOut,
+            ease: PhaserMath.Easing.Sine.InOut,
             yoyo: true,
             repeat: -1,
         });
@@ -89,9 +89,9 @@ export class BlueEnemy extends Physics.Arcade.Sprite {
             this.up_down_tween.timeScale = 1 + (3 - this.scale_damage) / 2;
             if (this.scale_damage === 1) {
                 // Use ease property instead of setEasing method
-                (this.up_down_tween as any).ease = "Power2";
+                (this.up_down_tween as unknown as Record<string, unknown>).ease = "Power2";
                 // Store custom property on the tween
-                (this.up_down_tween as any).x = 10;
+                (this.up_down_tween as unknown as Record<string, unknown>).x = 10;
             }
         }
     }

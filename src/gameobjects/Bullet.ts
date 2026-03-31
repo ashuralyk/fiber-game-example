@@ -1,9 +1,9 @@
-import { GameObjects, Math, Scene } from "phaser";
+import { GameObjects, Math as PhaserMath, type Scene } from "phaser";
 
 export class Bullet extends GameObjects.Image {
     speed: number;
     flame?: GameObjects.Particles.ParticleEmitter;
-    end_direction: Math.Vector2 = new Math.Vector2(0, 0);
+    end_direction: PhaserMath.Vector2 = new PhaserMath.Vector2(0, 0);
 
     constructor(scene: Scene, x: number, y: number) {
         super(scene, x, y, "bullet");
@@ -16,9 +16,9 @@ export class Bullet extends GameObjects.Image {
     fire(
         x: number,
         y: number,
-        targetX: number = 1,
-        targetY: number = 0,
-        bullet_texture: string = "bullet",
+        targetX = 1,
+        targetY = 0,
+        bullet_texture = "bullet",
     ): void {
         // Change bullet change texture
         this.setTexture(bullet_texture);

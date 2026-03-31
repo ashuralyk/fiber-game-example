@@ -1,4 +1,4 @@
-import { Game, AUTO, Scale, Types } from "phaser";
+import { Game, AUTO, Scale, type Types } from "phaser";
 import { Preloader } from "./preloader";
 import { GameOverScene } from "./scenes/GameOverScene";
 import { HudScene } from "./scenes/HudScene";

@@ -1,20 +1,22 @@
-import { Scene, Input, Types } from "phaser";
+import { Scene, type Input, type Types } from "phaser";
 import { Player } from "../gameobjects/Player";
 import { BlueEnemy } from "../gameobjects/BlueEnemy";
-import { Bullet } from "../gameobjects/Bullet";
+import type { Bullet } from "../gameobjects/Bullet";
 import { prepareNodes, payPlayerPoints, payBossPoints } from "../fiber";
+import type { FiberNode } from "../fiber/node";
+import type { HudScene } from "./HudScene";
 
 export class MainScene extends Scene {
     player: Player | null = null;
     enemy_blue: BlueEnemy | null = null;
     cursors!: Types.Input.Keyboard.CursorKeys;
-    bossNode: any = null;
-    playerNode: any = null;
-    bossPoints: number = 0;
-    playerPoints: number = 0;
+    bossNode: FiberNode | null = null;
+    playerNode: FiberNode | null = null;
+    bossPoints = 0;
+    playerPoints = 0;
 
-    points: number = 0;
-    game_over_timeout: number = 20;
+    points = 0;
+    game_over_timeout = 20;
 
     constructor() {
         super("MainScene");
@@ -92,10 +94,10 @@ export class MainScene extends Scene {
                         const hudScene = this.scene.get("HudScene");
                         if (
                             hudScene &&
-                            typeof (hudScene as any).update_timeout ===
+                            typeof (hudScene as unknown as HudScene).update_timeout ===
                                 "function"
                         ) {
-                            (hudScene as any).update_timeout(
+                            (hudScene as unknown as HudScene).update_timeout(
                                 this.game_over_timeout,
                             );
                         }
@@ -156,10 +158,10 @@ export class MainScene extends Scene {
                         const hudScene = this.scene.get("HudScene");
                         if (
                             hudScene &&
-                            typeof (hudScene as any).update_points ===
+                            typeof (hudScene as unknown as HudScene).update_points ===
                                 "function"
                         ) {
-                            (hudScene as any).update_points(this.points);
+                            (hudScene as unknown as HudScene).update_points(this.points);
                         }
                     }
                 },
@@ -197,10 +199,10 @@ export class MainScene extends Scene {
                         const hudScene = this.scene.get("HudScene");
                         if (
                             hudScene &&
-                            typeof (hudScene as any).update_points ===
+                            typeof (hudScene as unknown as HudScene).update_points ===
                                 "function"
                         ) {
-                            (hudScene as any).update_points(this.points);
+                            (hudScene as unknown as HudScene).update_points(this.points);
                         }
                     }
                 },
